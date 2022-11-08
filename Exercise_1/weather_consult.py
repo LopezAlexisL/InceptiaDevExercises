@@ -2,6 +2,12 @@ import json
 import requests
 
 class GeoAPI:
+    '''
+    Class that consult the weather in Pehuajo city using the data needed in local variables.
+    method: is_hot_in_pehuajo -> returns bool object
+    '''
+
+
     API_KEY = "d81015613923e3e435231f2740d5610b"
     LAT = "-35.836948753554054"
     LON = "-61.870523905384076"
@@ -9,6 +15,12 @@ class GeoAPI:
 
     @classmethod
     def is_hot_in_pehuajo(cls) -> bool:
+
+        '''
+        Function that receives a class as parametre and return bool object.
+        Check weather, parse it to °C and return False if <28° or True if >28°
+        '''
+
         res = requests.get(cls.url)
         if res.status_code not in (200,):
             return False
